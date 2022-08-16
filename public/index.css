@@ -1,0 +1,26 @@
+.navbar-nav a{
+    font-size: 18px;
+  }
+  ul > .navbar-nav> li a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: #0EA963;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out;
+  
+  }
+  .btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:50%;    
+}
+a:link 
+{ 
+ text-decoration:none; 
+} 
