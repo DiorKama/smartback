@@ -47,9 +47,6 @@
            @endauth
        
            @endif -->
-           <a href='' class='btn btn-outline-success rounded-pill ms-2'>
-            <i class='fa fa-shopping-cart me-1'></i>cart (0)
-           </a>
          </div>
      
             <form method="POST" action="{{ route('logout') }}">

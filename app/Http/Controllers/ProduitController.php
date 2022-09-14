@@ -8,6 +8,7 @@ use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProduitController extends Controller
 {
@@ -86,5 +87,19 @@ class ProduitController extends Controller
        Produit::where('id','=',$id)->delete();
        return redirect('produits');
     } 
-    
+    public function getProduit(){
+       $produit = Produit::all(); 
+       $categorie = Categorie::all();
+       return view('daral', compact('produit', 'categorie'));
+    }
+    public function getMouton(Request $request){
+        $categorie = Categorie::all();
+        $produit = Produit::where('categorie_id',$request->id)->get();
+        return view('daral', compact('produit', 'categorie'));
+    }
+    public function show($id)
+    {
+        $produits = Produit::find($id);
+        return view('Produit.show', compact('produits'));
+    }
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <x-monheader>
-
+<link rel="stylesheet" media="screen and (max-width: 1280px)" href="card-produit.css"/>
 </x-monheader>
+
 <body>
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
   <div class="container-fluid">
@@ -39,49 +40,41 @@
            @if (Route::has('register'))
            <a href="{{ route('register') }}" class='btn btn-outline-success rounded-pill ms-2'>
            <i class='fa fa-user-plus me-1'></i>
-           Inscription
+           Register
            </a>
            @endif
            @endauth
        
            @endif
-           <a href="{{route('cart.index')}}" class='btn btn-outline-success rounded-pill ms-2'>
-            <i class='fa fa-shopping-cart me-1'></i>{{ Cart::count() }}
-           </a>
+           <a href="#" class='btn btn-outline-success rounded-pill ms-2'>
+            <i class='fa fa-shopping-cart me-1'></i>{{ Cart::count() }}</a>
+           
          </div>
     </div>
   </div>
- </nav> 
-   <div class="mt-5 py-5">
-        <div class="table-responsive d-flex justify-content-between py-4 ms-5">
-        
-        <button type="button" class="btn btn-outline-success rounded-pill button-cat shadow-sm"><a href="{{route('tout-produit')}}" class="text-success button-cat" style="text-decoration: none;">Tous les Produits</a></button>   
-         
-        @foreach($categorie as $cate)
-        <button type="button" class="btn btn-outline-success rounded-pill button-cat shadow-sm"><a href="{{route('voir-categorie',['id'=>$cate->id])}}" class="text-success button-cat" style="text-decoration: none;">{{$cate->libelle}}</a></button>   
-         @endforeach
-        </div>
-   </div>
-   @if (session('success'))
-       <div class="alert alert-success col-md-6 offset-3 text-center">
-           {{ session('success')}}
-       </div> 
-   @endif   
-<div class="row ms-5 me-2 justify-content-between">
-@foreach($produit as $produit) 
-    <div class="card mt-3 shadow-sm" style="width: 18rem;" class="card-d-flex justify-content-between shadow">
-      <img src="{{ url('public/Image/'.$produit->image) }}" alt=""  class="card-img-top" height="130">
-      <div class="card-body">
-        <h5 class="card-title">{{$produit->libelle}}</h5>
-        <h3 class="card-prix text-success">{{$produit->prix}} CFA</h3>
-        <p class="card-text">{{$produit->description}}</p>
-        <a href="{{route('voir-produit',['id'=>$produit->id])}}" class="btn btn-success">Voir Plus</a>
-      </div>
-    </div> 
-    @endforeach
-  </div>
-<x-monbody>
+ </nav>
 
+ <div class="card card-produit  shadow">
+  <div class="row">
+    <div class="col-md-5">
+      <img src="{{ url('public/Image/'.$produits->image) }}" alt=""  class="img-fluid rounded-start">  
+    </div>
+    <div class="col-md-7">
+      <div class="card-body">
+      <h6 class="card-title"><span class="text-body">Titre:</span>  {{$produits->libelle}}</h6><br>
+        <h5 class="card-title text-success"><span class="text-body">Prix:</span>  {{$produits->prix}}CFA</h5><br>
+        <h6 class="card-text"><span class="text-body">Description:</span>  {{$produits->description}}</h6><br>
+        <h6 class=""><span class="text-body">Date Ajout:</span>  {{$produits->date_ajout}}</h6><br>
+        <form action="{{route('cart.store')}}" method="POST">
+          @csrf
+          <input type="hidden" name="produit_id" value="{{$produits->id}}">
+          <button type="submit" class="btn btn-success"><i class='fa fa-plus me-1'></i>Ajouter au panier</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<x-monbody> 
 </x-monbody>
 </body>
 </html>

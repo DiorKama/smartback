@@ -1,6 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\EleveurController;
 use App\Http\Controllers\ProduitController;
 
@@ -18,9 +19,7 @@ use App\Http\Controllers\ProduitController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/e-daral', function () {
-    return view('daral');
-});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,6 +36,23 @@ Route::get('/deleteProduit/{id}', [ProduitController::class, 'delete']);
 
 Route::get('/ajoutEleveur',  [EleveurController::class, 'create']);
 Route::post('/ajoutEleveur',  [EleveurController::class, 'store'])->name('ajoutEleveur');
+
+Route::get('/e-daral', [ProduitController::class, 'getProduit'])->name('tout-produit');
+Route::get('/categorie/{id}', [ProduitController::class, 'getMouton'])->name("voir-categorie");
+Route::get('/produit/{id}', [ProduitController::class, 'show'])->name("voir-produit"); 
+
+// cart Route
+Route::get('/panier', [CartController::class, 'index'])->name('cart.index');
+Route::post('panier/ajouter', [CartController::class,'store'])->name('cart.store');
+Route::put('panier/{rowId}', [CartController::class,'update'])->name('cart.update');
+Route::delete('panier/{rowId}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+ Route::get('viderPanier', function (){
+ Cart::destroy();
+ });
+
+
+
       
 
  

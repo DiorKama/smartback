@@ -40,15 +40,12 @@
            @if (Route::has('register'))
            <a href="{{ route('register') }}" class='btn btn-outline-success rounded-pill ms-2'>
            <i class='fa fa-user-plus me-1'></i>
-           Register
+           Inscription
            </a>
            @endif
            @endauth
        
            @endif
-           <a href='' class='btn btn-outline-success rounded-pill ms-2'>
-            <i class='fa fa-shopping-cart me-1'></i>cart (0)
-           </a>
          </div>
      
             <form method="POST" action="{{ route('logout') }}">

@@ -46,14 +46,11 @@
            @if (Route::has('register'))
            <a href="{{ route('register') }}" class='btn btn-outline-success rounded-pill ms-2 '>
            <i class='fa fa-user-plus me-1'></i>
-           Register
+           Inscription
            </a>
            @endif
            @endauth
            @endif
-           <a href='' class='btn btn-outline-success ms-2 rounded-pill'>
-            <i class='fa fa-shopping-cart me-1'></i>cart (0)
-           </a>
          </div>
     </div>
   </div>
@@ -122,11 +119,11 @@
 
                     <div class="flex items-center justify-end mt-4">
                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
+                            {{ __('Vous avez déjà un compte?') }}
                         </a>
 
                         <x-button class="ml-4">
-                            {{ __('Register') }}
+                            {{ __('Inscription') }}
                         </x-button>
                     </div>
                 </form> 
