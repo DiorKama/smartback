@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
   <div class="container-fluid">
     <div>
-     <a href='#'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
+     <a href='/'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,10 +41,10 @@
           <a class="nav-link ms-4" href="/e-daral">E-daral</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Ferme</a>
+          <a class="nav-link ms-4" href="/ferme">Ferme</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Contact</a>
+          <a class="nav-link ms-4" href="/contact">Contact</a>
         </li>
       </ul>
       <div class='buttons'>
@@ -87,16 +87,22 @@
             </div>
           </div>
           <div class="row annonce">
-            <h3 class="text-success ms-5">Annonces</h3>
+            <h2 class="text-success ms-5 souligne">Annonces</h2>
             <div class="">
               <div class="row row-cols-1 row-cols-md-4 g-3 ms-5">
               <div class="col md-3">
                 <div class="card" style="width: 16rem;">
                   <img src="/images/202208101447sddefault-20-removebg-preview.png" class="card-img-top" alt="..." height="120">
                   <div class="card-body">
-                    <h5 class="card-title">Moutons</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-success">Commander</a>
+                    <h5 class="card-title fw-bold">Moutons</h5>
+                     <p>Description moutons</p>
+                     <h4 class="card-prix text-success">800.000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 234 23 43
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>27-08-2022
+                    </p>
                   </div>
                 </div>
               </div>
@@ -104,9 +110,15 @@
               <div class="card" style="width: 16rem;">
                 <img src="/images/chevre.png" class="card-img-top" alt="" height="120">
                 <div class="card-body">
-                  <h5 class="card-title">Moutons</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-success">Commander</a>
+                <h5 class="card-title fw-bold">Chevre</h5>
+                     <p>Description chevre</p>
+                     <h4 class="card-prix text-success">20.000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 453 65 76
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>30-08-2022
+                    </p>
                 </div>
               </div>
             </div>
@@ -114,9 +126,15 @@
               <div class="card" style="width: 16rem;">
                 <img src="/images/202208101505OIP-removebg-preview.png" class="card-img-top" alt="..." height="120">
                 <div class="card-body">
-                  <h5 class="card-title">Moutons</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-success">Commander</a>
+                <h5 class="card-title fw-bold">Vache</h5>
+                     <p>Description vache</p>
+                     <h4 class="card-prix text-success">900.000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>76 553 77 46
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>18-08-2022
+                    </p>
                 </div>
               </div>
             </div>
@@ -124,17 +142,93 @@
               <div class="card" style="width: 16rem;">
                 <img src="/images/poule.jpg" class="card-img-top" alt="..." height="120">
                 <div class="card-body">
-                  <h5 class="card-title">Moutons</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-success">Commander</a>
+                <h5 class="card-title fw-bold">Volaille</h5>
+                     <p>Description volaille</p>
+                     <h4 class="card-prix text-success">6000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 063 35 75
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>16-08-2022
+                    </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="mt-3"></div>
+            <div class="">
+              <div class="row row-cols-1 row-cols-md-4 g-3 ms-5">
+              <div class="col md-3">
+                <div class="card" style="width: 16rem;">
+                  <img src="/images/moutons2.png" class="card-img-top" alt="..." height="120">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Moutons</h5>
+                     <p>Description moutons</p>
+                     <h4 class="card-prix text-success">800.000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 453 76 89
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>27-08-2022
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <div class="col md-3">
+              <div class="card" style="width: 16rem;">
+                <img src="/images/oeufs.png" class="card-img-top" alt="" height="120">
+                <div class="card-body">
+                <h5 class="card-title fw-bold">Tablettes oeufs</h5>
+                     <p>Description</p>
+                     <h4 class="card-prix text-success">2000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 533 76 89
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>15-08-2022
+                    </p>
+                </div>
+              </div>
+            </div>
+            <div class="col md-3">
+              <div class="card" style="width: 16rem;">
+                <img src="/images/poulet.png" class="card-img-top" alt="..." height="120">
+                <div class="card-body">
+                <h5 class="card-title fw-bold">Ploulet</h5>
+                     <p>Description poulet</p>
+                     <h4 class="card-prix text-success">6000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>76 453 76 89
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>10-08-2022
+                    </p>
+                </div>
+              </div>
+            </div>
+            <div class="col md-3">
+              <div class="card" style="width: 16rem;">
+                <img src="/images/viandes.png" class="card-img-top" alt="..." height="120">
+                <div class="card-body">
+                <h5 class="card-title fw-bold">Viandes</h5>
+                     <p>Description viande par kg</p>
+                     <h4 class="card-prix text-success">3000 CFA</h4>
+                    <p class="card-text">
+                    <i class="fa fa-whatsapp me-3 text-success fw-bold" aria-hidden="true"></i>77 654 76 89
+                    </p>
+                    <p class="card-text">
+                    <i class="fa fa-clock-o me-3 text-success" aria-hidden="true"></i>3-08-2022
+                    </p>
+                </div>
+              </div>
+            </div>
           </div>
-          </div>
-          <x-monbody>
-
-        </x-monbody>
+        </div>
+      </div>
+<x-monfooter>
+</x-monfooter>
+<x-monbody>
+</x-monbody>
     </body>
 </html>

@@ -51,40 +51,39 @@
          </div>
     </div>
   </div>
- </nav> 
-   <div class="mt-5 py-5">
-         <h2 class="mt-5 ms-5 text-success souligne">E-daral</h2>
-        <div class="table-responsive d-flex justify-content-between py-4 ms-5">
-        
-        <button type="button" class="btn btn-outline-success rounded-pill button-cat shadow-sm"><a href="{{route('tout-produit')}}" class="text-success button-cat" style="text-decoration: none;">Tous les Produits</a></button>   
-         
-        @foreach($categorie as $cate)
-        <button type="button" class="btn btn-outline-success rounded-pill button-cat shadow-sm"><a href="{{route('voir-categorie',['id'=>$cate->id])}}" class="text-success button-cat" style="text-decoration: none;">{{$cate->libelle}}</a></button>   
-         @endforeach
-        </div>
-   </div>
-   @if (session('success'))
-       <div class="alert alert-success col-md-6 offset-3 text-center">
-           {{ session('success')}}
-       </div> 
-   @endif   
-<div class="row ms-5 me-2 justify-content-between">
-@foreach($produit as $produit) 
-    <div class="card mt-3 shadow-sm" style="width: 18rem;" class="card-d-flex justify-content-between shadow">
-      <img src="{{ url('public/Image/'.$produit->image) }}" alt=""  class="card-img-top" height="130">
-      <div class="card-body">
-        <h5 class="card-title">{{$produit->libelle}}</h5>
-        <h3 class="card-prix text-success">{{$produit->prix}} CFA</h3>
-        <p class="card-text">{{$produit->description}}</p>
-        <a href="{{route('voir-produit',['id'=>$produit->id])}}" class="btn btn-success">Voir Plus</a>
-      </div>
-    </div> 
-    @endforeach
+ </nav>
+<div class="mt-5 py-5">
+    <h2 class="mt-5 ms-5 text-success souligne">Gallerie Ferme</h2>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <x-monfooter>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/ferme.jpg" class="d-block w-100" alt="..." height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="images/guinar.jpg" class="d-block w-100" alt="..." height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="images/fermes.jpg" class="d-block w-100 " alt="..." height="500">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+ <x-monfooter>
   </x-monfooter>
 <x-monbody>
-
 </x-monbody>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
   <div class="container-fluid">
     <div>
-     <a href='#'><img src="/images/logos.png" alt="logo" width="100" height="70"></img></a>
+     <a href='/'><img src="/images/logos.png" alt="logo" width="100" height="70"></img></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,10 +28,10 @@
           <a class="nav-link ms-4" href="/e-daral">E-daral</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Ferme</a>
+          <a class="nav-link ms-4" href="/ferme">Ferme</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Contact</a>
+          <a class="nav-link ms-4" href="/contact">Contact</a>
         </li>
       </ul>
       <div class='buttons'>
@@ -50,7 +50,7 @@
            </a>
            @endif
            @endauth
-           @endif
+           @endif 
          </div>
     </div>
   </div>
@@ -116,6 +116,29 @@
 
                         <x-input id="telephone" class="block mt-1 w-full" type="text" name="telephone" :value="old('telephone')" required />
                     </div>
+                    <!-- Champ adresse -->
+                    <div>
+                        <x-label for="adresse" :value="__('Adresse')" />
+
+                        <x-input id="adresse" class="block mt-1 w-full" type="text" name="adresse" :value="old('adresse')" required/>
+                    </div>
+                     <!-- Champ cni -->
+                    <div>
+                        <x-label for="cni" :value="__('CNI')" />
+
+                        <x-input id="cni" class="block mt-1 w-full" type="text" name="cni" :value="old('cni')" required/>
+                    </div>
+                     <!-- Champ role -->
+                     <div class="mt-4">
+
+                    <x-label for="compte" :value="__('Compte')" />
+                    <select class="form-select block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" aria-label="Default select example" name="compte">
+                       
+                    @foreach($role as $role)
+                        <option value="{{$role->id}}">{{$role->nomRole}}</option>
+                       @endforeach
+                    </select>
+                    </div>
 
                     <div class="flex items-center justify-end mt-4">
                         <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
@@ -132,6 +155,8 @@
             </div>
           
 <!-- JavaScript Bundle with Popper -->
+<x-monfooter>
+</x-monfooter>
 <x-monbody>
 
 </x-monbody>

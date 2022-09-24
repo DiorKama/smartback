@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->date('date_commande');
-            $table->unsignedBigInteger('client_id');
+            $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('paiement_id');
             $table->timestamps();
         });

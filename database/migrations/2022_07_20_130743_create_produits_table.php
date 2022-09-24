@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('description');
             $table->date('date_ajout');
              $table->foreignId('categorie_id')->constrained();
-             $table->foreignId('eleveur_id')->constrained();
+             $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

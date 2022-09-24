@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
   <div class="container-fluid">
     <div>
-     <a href='#'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
+     <a href='/'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,10 +22,10 @@
           <a class="nav-link ms-4" href="/e-daral">E-daral</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Ferme</a>
+          <a class="nav-link ms-4" href="/ferme">Ferme</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Contact</a>
+          <a class="nav-link ms-4" href="ferme">Contact</a>
         </li>
       </ul>
       <div class='buttons'>
@@ -44,16 +44,14 @@
            </a>
            @endif
            @endauth
-       
-           @endif
-           <a href="#" class='btn btn-outline-success rounded-pill ms-2'>
-            <i class='fa fa-shopping-cart me-1'></i>{{ Cart::count() }}</a>
-           
+           @endif 
          </div>
     </div>
   </div>
  </nav>
-
+ <a href="#" class='btn btn-outline-success rounded-pill ms-2'>
+  <i class='fa fa-shopping-cart me-1'></i>{{ Cart::count() }}</a>
+  
  <div class="card card-produit  shadow">
   <div class="row">
     <div class="col-md-5">
@@ -74,6 +72,7 @@
     </div>
   </div>
 </div>
+
 <x-monbody> 
 </x-monbody>
 </body>

@@ -12,7 +12,6 @@
     visibility: hidden;
     width: 0px;
     transition: all 0.3s ease-in-out;
-  
   }
   .btn-xl {
     padding: 10px 20px;
@@ -69,7 +68,7 @@ ul li a {
   background-color: #fff;
 }
 
-@media (max-width: 1240px){
+@media(max-width: 1240px){ 
   nav{
     width: 100%;
   }
@@ -80,7 +79,8 @@ ul li a {
       max-width: 100% !important;
       overflow-x: hidden !important;
   }
-
+   
+  
 }
 body {
   overflow-x: hidden !important;
@@ -88,4 +88,38 @@ body {
 .container {
   max-width: 100% !important;
   overflow-x: hidden !important;
+}
+
+.voirPlus{
+  opacity: 0.5;
+}
+.voirPlus > a{
+  text-decoration: none;
+  color: white;
+}
+.copyright{
+  margin-left: 400px;
+  
+}
+.enveloppe{
+  font-size: 11px;
+}
+.envoyer{
+  border: none;
+}
+.souligne{
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
+ .formulaire{
+  margin-left: 200px;
+  margin-bottom: 10px;
+} 
+@media(max-width: 740px){ 
+  .response{
+    margin-right: 100%;
+  }
+  .formulaire{
+    margin-right: 100%;
+  }
 }

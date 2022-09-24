@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Client;
+use App\Models\User;
 use App\Models\Paiement;
 use App\Models\CommandeProduit;
 use Illuminate\Database\Eloquent\Model;
@@ -14,9 +14,9 @@ class Commande extends Model
 
     protected $guarded = ['id'];
 
-    public function client(){
-        return $this->belongsTo(Client::class);
-    }
+    public function user(){
+        return $this->belongsTo(User::class); 
+      }
     public function paiement(){
         return $this->belongsTo(Paiement::class);
     }

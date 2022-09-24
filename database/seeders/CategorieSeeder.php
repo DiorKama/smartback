@@ -20,7 +20,7 @@ class CategorieSeeder extends Seeder
             'libelle' => 'Moutons',
         ]);
         DB::table('categories')->insert([
-            'libelle' => 'Boeufs',
+            'libelle' => 'Viandes',
         ]);
         DB::table('categories')->insert([
             'libelle' => 'Chèvres',

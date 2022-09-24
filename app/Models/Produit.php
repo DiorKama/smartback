@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Eleveur;
+use App\Models\User;
 use App\Models\Categorie;
 use App\Models\CommandeProduit;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +23,7 @@ class Produit extends Model
     public function commandeProduit(){
         return $this->hasMany(CommandeProduit::class);
     }
-    public function eleveur(){
-        return $this->belongsTo(Eleveur::class); 
+    public function user(){
+        return $this->belongsTo(User::class); 
       }
 }

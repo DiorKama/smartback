@@ -3,8 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Client;
-use App\Models\Eleveur;
+
+use App\Models\Role;
+use App\Models\Produit;
+use App\Models\Commande;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +27,9 @@ class User extends Authenticatable
         'email',
         'password',
         'telephone',
+        'adresse',
+        'cni',
+        'role_id',
         
     ];
 
@@ -46,10 +51,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function eleveur(){
-        return $this->hasMany(Eleveur::class); 
+    public function produit(){
+        return $this->hasMany(Produit::class); 
       }
-      public function client(){
-        return $this->hasMany(Client::class); 
+      public function commande(){
+        return $this->hasMany(Commande::class); 
+      }
+      public function role(){
+        return $this->belongsTo(Role::class); 
       }
 }

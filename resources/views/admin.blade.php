@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <x-monheader>
-
 </x-monheader>
 <body>
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
@@ -58,7 +56,6 @@
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                   </form>
-                  <a class="dropdown-item" href="{{ route('produits') }}">Liste des produits</a>
               </div>
           </div>
       @endguest
@@ -67,56 +64,66 @@
   </div>
 </nav>
 <div class="mt-5 py-5">
-    <h2 class="text-center text-success">Ajout des produits</<h2>
+<div class="container-xl mt-5 py-5">
+	<div class="table-responsive py-5">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="">
+						<h2 class="text-center">Liste <b>Utilisateurs</b></h2>
+					</div>
+				</div>
+			</div>
+            <table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Email</th>
+                      <th>Telephone</th>
+                        <th>Adresse</th>
+                        <th>Cni</th>
+                        <th>Role</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+                @foreach($user as $user)
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+	
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->prenom}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->telephone}}</td>
+                        <td>{{$user->adresse}}</td>
+                        <td>{{$user->cni}}</td>
+                        <td>{{$user->role_id}}</td>
+						<td>
+							<button type="button" class="btn btn-danger"><a href="{{url('supprimerUser/'.$user->id)}}" class="text-white" style="text-decoration: none;"><i class="fa fa-trash" aria-hidden="true"></i></a></button>
+						</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+     </div>
 </div>
-
-<div class="container bg-white">
-   <div class="row">
-         <div class="col-md-6">
-         <img src="images/undraw_Online_re_x00h.png" width="505" height="450"></img>
-         </div>
-         <div class="col-md-6">
-           <form enctype="multipart/form-data"  method="POST" class="bg-white shadow rounded" action="{{route('ajoutProduit')}}">
-            @csrf
-            <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="username">Titre</label>
-                <input type="text" class="form-control" id="libelle" aria-describedby="libelle" name="libelle" >
-             </div>
-             <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="fileupload">Image</label>
-                <input class="form-control" input type="file" class="form-control-file ms-auto" id="image" aria-describedby="fileupload" name="image">   
-            </div> 
-            <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="username">Prix</label>
-                <input type="number" class="form-control" id="prix" aria-describedby="prix" name="prix">
-             </div>
-             <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="textarea">Description</label>
-                <textarea class="form-control" id="description" rows="5" name="description" ></textarea >
-             </div>
-             <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="username">Date Ajout</label>
-                <input type="date" class="form-control" id="date_ajout" aria-describedby="date_ajout" name="date_ajout">
-            </div>
-            <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="eleveur">Categorie</label>
-                <select class="form-select" aria-label="Default select example" name="categorie">
-                    @foreach($categorie as $cat)
-                    <option value="{{ $cat->id }}"> {{$cat->libelle}} </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="text-center mt-2">
-            <button type="submit" class="btn btn-success">Ajouter</button>
-        </div>
-    </form>
-    </div>
-    </div>
+</div>
 </div>
 <x-monfooter>
 </x-monfooter>
 <x-monbody>
-
 </x-monbody>
 </body>
 </html>

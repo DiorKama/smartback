@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +21,9 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $role= DB::table('roles')->limit(2)->get();
+
+        return view('auth.register',compact('role'));
     }
 
     /**
@@ -39,6 +42,9 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'telephone' => ['required', 'string', 'max:255'],
+            'adresse' => ['required', 'string', 'max:255'],
+            'cni' => ['required', 'string', 'max:255'],
+            'role_id' =>[ 'integer', 'max: 13']
         ]);
 
         $user = User::create([
@@ -47,12 +53,23 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'telephone' =>$request->telephone,
+            'adresse' =>$request->adresse,
+            'cni' =>$request->cni,
+            'role_id' =>$request->compte,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if(auth()->user()->role_id==1){
+            return redirect('ajoutProduit');
+        }
+        elseif(auth()->user()->role_id==3){ 
+            return redirect('admin');
+        }
+        else{
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 }

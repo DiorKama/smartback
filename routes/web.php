@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\EleveurController;
 use App\Http\Controllers\ProduitController;
@@ -27,15 +28,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/produits',  [ProduitController::class, 'index']);
-Route::get('/ajoutProduit',  [ProduitController::class, 'create']);
-Route::post('/ajoutProduit',  [ProduitController::class, 'store'])->name('ajoutProduit');
-Route::get('/modifierProduit/{id}',  [ProduitController::class, 'edit']);
-Route::put('/updateProduit/{id}',  [ProduitController::class, 'update']);
+Route::get('/produits',  [ProduitController::class, 'index'])->middleware(['auth'])->name('produits');
+Route::get('/ajoutProduit',  [ProduitController::class, 'create'])->middleware(['auth'])->name('ajoutProduit');
+Route::post('/ajoutProduit',  [ProduitController::class, 'store'])->middleware(['auth'])->name('ajoutProduit');
+Route::get('/modifierProduit/{id}',  [ProduitController::class, 'edit'])->middleware(['auth']);
+Route::put('/updateProduit/{id}',  [ProduitController::class, 'update'])->middleware(['auth']);
 Route::get('/deleteProduit/{id}', [ProduitController::class, 'delete']);
 
-Route::get('/ajoutEleveur',  [EleveurController::class, 'create']);
-Route::post('/ajoutEleveur',  [EleveurController::class, 'store'])->name('ajoutEleveur');
 
 Route::get('/e-daral', [ProduitController::class, 'getProduit'])->name('tout-produit');
 Route::get('/categorie/{id}', [ProduitController::class, 'getMouton'])->name("voir-categorie");
@@ -50,8 +49,14 @@ Route::delete('panier/{rowId}', [CartController::class, 'destroy'])->name('cart.
  Route::get('viderPanier', function (){
  Cart::destroy();
  });
-
-
+ Route::get('/ferme', function () {
+    return view('ferme');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/admin', [UserController::class, 'index'])->middleware(['auth'])->name('admin');
+Route::get('/supprimerUser/{id}', [UserController::class, 'delete']);
 
       
 

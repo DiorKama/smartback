@@ -8,7 +8,7 @@
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm fixed-top">
   <div class="container-fluid">
     <div>
-     <a href='#'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
+     <a href='/'><img src="/images/logos.png" alt="logo" width="255" height="70"></img></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,44 +19,48 @@
           <a class="nav-link active" aria-current="page" href="/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="/e-daralAUT">E-daral</a>
+          <a class="nav-link ms-4" href="/e-daral">E-daral</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Ferme</a>
+          <a class="nav-link ms-4" href="/ferme">Ferme</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ms-4" href="#">Contact</a>
+          <a class="nav-link ms-4" href="/contact">Contact</a>
         </li>
       </ul>
       <div class='buttons'>
-         @if (Route::has('login'))
-         @auth
-         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-         @else
-           <a href="{{ route('login') }}" class='btn btn-outline-success rounded-pill'>
-           <i class='fa fa-user me-1'></i>
-           Login
-           </a>
-           @if (Route::has('register'))
-           <a href="{{ route('register') }}" class='btn btn-outline-success rounded-pill ms-2'>
-           <i class='fa fa-user-plus me-1'></i>
-           Inscription
-           </a>
-           @endif
-           @endauth
-       
-           @endif
-         </div>
-     
-            <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+      @guest
+          @if (Route::has('login'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+          @endif
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
+          @if (Route::has('register'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+          @endif
+      @else
+          <div class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+          </div>
+      @endguest
+     </div>
     </div>
   </div>
 </nav>
@@ -66,8 +70,8 @@
 
 <div class="container bg-white">
    <div class="row">
-         <div class="col-md-6">
-         <img src="Image/undraw_Online_re_x00h.png" width="505" height="450"></img>
+   <div class="col-md-6">
+         <img src="/images/undraw_Online_re_x00h.png" width="505" height="450"></img>
          </div>
          <div class="col-md-6">
            <form  method="POST" class="bg-white shadow rounded" action="{{url('updateProduit/'.$produit->id)}}" enctype="multipart/form-data">
@@ -104,14 +108,6 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group" style="width: 75%; margin-left: 12%;">
-                <label for="eleveur">Eleveur</label>
-                <select class="form-select" aria-label="Default select example" name="eleveur">
-                    @foreach($eleveur as $use)
-                    <option value="{{$use->id}}"> {{$use->user_id}} </option>
-                    @endforeach
-                </select>
-            </div>
             
             <div class="text-center mt-2">
             <button type="submit" class="btn btn-primary" value="Update">Modifier</button>
@@ -120,6 +116,8 @@
     </div>
     </div>
 </div>
+<x-monfooter>
+</x-monfooter>
 <x-monbody>
 
 </x-monbody>

@@ -7,6 +7,7 @@ use App\Models\Eleveur;
 use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -14,16 +15,16 @@ class ProduitController extends Controller
 {
     public function index()
     {
-        $produit = Produit::all();
-        return view('Produit.index', compact('produit'));
+        $user = User::get();
+        $produit = Produit::get();
+        return view('Produit.index', compact('produit', 'user'));
     }
     
     public function create()
     {
         $categorie = Categorie::all();
-        $eleveur= Eleveur::all();
-        $user = User::all();
-        return view('Produit.ajout',compact('categorie', 'user','eleveur'));
+        $user = User::get();
+        return view('Produit.ajout',compact('categorie', 'user'));
     }
 
     public function store(Request $request)
@@ -41,9 +42,8 @@ class ProduitController extends Controller
         $produit->description = $request->input('description');
         $produit->date_ajout = $request->input('date_ajout');
         $produit->categorie_id = (int)$request->input('categorie') ;
-        $produit->eleveur_id = (int)$request->input('eleveur') ;
-       
-       
+        $user_id = Auth::id();
+        $produit->user_id = $user_id ;
         $produit->save() ;
       
         return redirect('produits');
@@ -52,9 +52,8 @@ class ProduitController extends Controller
     public function edit($id) {
         $produit = Produit::where('id','=',$id)->first();
         $categorie = Categorie::all();
-        $eleveur= Eleveur::all();
-        $user = User::all();
-        return view("Produit.edit", compact("produit", "categorie", "user", "eleveur"));
+        $user = User::get();
+        return view("Produit.edit", compact("produit", "categorie", "user"));
     }
 
     public function update(Request $request, $id)
@@ -76,7 +75,8 @@ class ProduitController extends Controller
         $produit->description = $request->input('description');
         $produit->date_ajout = $request->input('date_ajout');
         $produit->categorie_id = (int)$request->input('categorie') ;
-        $produit->eleveur_id = (int)$request->input('eleveur') ;
+        $user_id = Auth::id();
+        $produit->user_id = $user_id ;
        
          $produit->update() ;
          return redirect('produits'); 
